@@ -102,6 +102,8 @@ public class MainActivity extends Activity implements Constants{
 			Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
 			setActionBar(toolbar);
 			toolbar.setTitle(getResources().getString(R.string.app_name));
+                        toolbar.setTitleTextColor(0xff4c8bf4);
+                        toolbar.setElevation(6);
 		} else {
 			// Custom ActionBar view
 			ActionBar actionBar = getActionBar();
@@ -300,7 +302,7 @@ public class MainActivity extends Activity implements Constants{
 				String htmlColorOpen = "";
 				if (isLollipop) {
 					if (Preferences.getCurrentTheme(mContext) == 0) { // Light
-						htmlColorOpen = "<font color='#009688'>";
+						htmlColorOpen = "<font color='#757575'>";
 					} else {
 						htmlColorOpen = "<font color='#80cbc4'>";
 					}
@@ -320,7 +322,7 @@ public class MainActivity extends Activity implements Constants{
 				String htmlColorOpen = "";
 				if (isLollipop) {
 					if (Preferences.getCurrentTheme(mContext) == 0) { // Light
-						htmlColorOpen = "<font color='#009688'>";
+						htmlColorOpen = "<font color='#757575'>";
 					} else {
 						htmlColorOpen = "<font color='#80cbc4'>";
 					}
@@ -337,7 +339,7 @@ public class MainActivity extends Activity implements Constants{
 				String htmlColorOpen = "";
 				if (isLollipop) {
 					if (Preferences.getCurrentTheme(mContext) == 0) { // Light
-						htmlColorOpen = "<font color='#009688'>";
+						htmlColorOpen = "<font color='#757575'>";
 					} else {
 						htmlColorOpen = "<font color='#80cbc4'>";
 					}
@@ -405,7 +407,7 @@ public class MainActivity extends Activity implements Constants{
 		String htmlColorOpen = "";
 		if (isLollipop) {
 			if (Preferences.getCurrentTheme(mContext) == 0) { // Light
-				htmlColorOpen = "<font color='#009688'>";
+				htmlColorOpen = "<font color='#757575'>";
 			} else {
 				htmlColorOpen = "<font color='#80cbc4'>";
 			}

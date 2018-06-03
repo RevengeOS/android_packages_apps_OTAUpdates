@@ -17,6 +17,6 @@
 <resources>
 
     <dimen name="shadow_height">2dp</dimen>
-    <dimen name="card_view_radius">3dp</dimen>
+    <dimen name="card_view_radius">2dp</dimen>
 
 </resources>

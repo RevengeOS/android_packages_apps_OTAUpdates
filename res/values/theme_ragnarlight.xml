@@ -37,15 +37,16 @@
         <item name="backgroundSelector">@drawable/list_selector_holo_light</item>
         <item name="cardBackground">@color/card_background_holo_light</item>
         <item name="cardStyle">@style/CardStyle.Light</item>
-        <item name="textColorPrimary">@color/black</item>
+        <item name="textColorPrimary">@color/pixel_blue</item>
         <item name="textColorSecondary">@color/dark_grey</item>
         <item name="proRibbon">@drawable/pro_ribbon_light</item>
     </style>
 
-    <style name="ActionBar.Solid.RagnarLight" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+    <style name="ActionBar.Solid.RagnarLight" parent="@android:style/Widget.Material.Light.ActionBar">
         <item name="android:background">@drawable/ab_solid_holo_light</item>
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_holo_light</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_holo_light</item>
+        <item name="textColorPrimary">@color/pixel_blue</item>
     </style>
 
     <style name="Theme.RagnarLight.Settings" parent="Theme.RagnarLight" />
