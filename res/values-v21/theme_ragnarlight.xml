@@ -16,7 +16,7 @@
 -->
 <resources>
 
-    <style name="Theme.RagnarLight" parent="@android:Theme.Material.Light">
+    <style name="Theme.RagnarLight" parent="@android:Theme.DeviceDefault.Settings">
 
         <!-- Styleables -->
         <item name="noUpdateAvailable">@color/material_red_500</item>
@@ -27,7 +27,7 @@
         <item name="downloadIcon">@drawable/drawable_download</item>
         <item name="browserIcon">@drawable/drawable_website</item>
         <item name="donateIcon">@drawable/drawable_donate</item>
-        <item name="checkIcon">@drawable/drawable_check</item>
+        <item name="checkIcon">@drawable/ic_check</item>
         <item name="addonsIcon">@drawable/drawable_addon</item>
         <item name="separator">@color/separator_light</item>
         <item name="backgroundRippleSelector">@drawable/ripple_selector_light</item>
@@ -40,13 +40,14 @@
         <item name="cardBackground">@color/card_background_material_light</item>
         <item name="cardStyle">@style/CardStyle.Light</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="textColorPrimary">@color/primary_text_material_light</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="textColorPrimary">@color/accent_material_light</item>
         <item name="textColorSecondary">@color/secondary_text_material_light</item>
         <item name="materialAccent">@color/accent_material_light</item>
+        <item name="android:windowBackground">@drawable/material_background_light</item>
     </style>
 
-    <style name="Theme.RagnarLight.Settings" parent="@android:Theme.Material.Settings">
+    <style name="Theme.RagnarLight.Settings" parent="@android:Theme.DeviceDefault.Settings">
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowActionBar">true</item>
     </style>

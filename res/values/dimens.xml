@@ -16,8 +16,8 @@
 -->
 <resources>
 
-    <dimen name="shadow_height">3dp</dimen>
-    <dimen name="card_view_radius">4dp</dimen>
+    <dimen name="shadow_height">0dp</dimen>
+    <dimen name="card_view_radius">0dp</dimen>
     <dimen name="preference_item_padding_side">8.0dip</dimen>
     <dimen name="preference_item_padding_inner">8.0dip</dimen>
     <dimen name="preference_child_padding_side">16.0dip</dimen>
