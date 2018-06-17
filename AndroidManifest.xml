@@ -47,7 +47,7 @@
     <application
         android:name="com.ota.updates.OtaUpdates"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="Revenge OTA"
         android:theme="@style/Theme.RagnarLight"
         android:uiOptions="splitActionBarWhenNarrow" >
