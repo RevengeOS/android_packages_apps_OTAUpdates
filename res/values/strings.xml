@@ -22,6 +22,8 @@
     
     <!-- App Strings -->
     <string name="app_name" translatable="false">Revenge OTA</string>
+    <string name="ota_settings_name" translatable="false">Updates</string>
+    <string name="ota_settings_summary" translatable="false">Android 8.1.0</string>
     <string name="prop_name" translatable="false">ro.ota.romname</string>
     <string name="app_version" translatable="false">1</string>
     <string name="changelog_url" translatable="false">https://raw.githubusercontent.com/MatthewBooth/OTAUpdates/stable/Changelog.md</string>
