@@ -22,7 +22,7 @@
     
     <!-- App Strings -->
     <string name="app_name" translatable="false">Revenge OTA</string>
-    <string name="ota_settings_name" translatable="false">Aktulizace</string>
+    <string name="ota_settings_name" translatable="false">Aktualizace</string>
     <string name="ota_settings_summary" translatable="false">Android 8.1.0</string>
     <string name="prop_name" translatable="false">ro.ota.romname</string>
     <string name="app_version" translatable="false">1</string>
