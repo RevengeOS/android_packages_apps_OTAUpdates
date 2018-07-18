@@ -40,12 +40,6 @@
             <include layout="@layout/card_update" />
 
             <include layout="@layout/card_no_update" />
-            
-            <include layout="@layout/card_addons" />
-
-            <include layout="@layout/card_website" />
-
-            <include layout="@layout/card_donate" />
 
             <include layout="@layout/card_rom_info" />
         </LinearLayout>

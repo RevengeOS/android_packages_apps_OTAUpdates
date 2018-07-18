@@ -79,11 +79,8 @@ public class MainActivity extends Activity implements Constants{
 
 			if (action.equals(MANIFEST_LOADED)) {
 				// Reloads layouts to reflect the updated manifest information
-				updateDonateLinkLayout();
-				updateAddonsLayout();
 				updateRomInformation();
 				updateRomUpdateLayouts();
-				updateWebsiteLayout();
 			}
 		}
 	};
@@ -115,18 +112,6 @@ public class MainActivity extends Activity implements Constants{
 			View actionbarView = LayoutInflater.from(this).inflate(R.layout.ota_main_actionbar_top, null);
 			actionBar.setCustomView(actionbarView, layoutParams);
 			actionBar.setDisplayShowCustomEnabled(true);
-		}
-		
-		boolean firstRun = Preferences.getFirstRun(mContext);				
-		if(firstRun) {
-			Preferences.setFirstRun(mContext, false);
-			showWhatsNew();
-		}
-		
-		String oldChangelog = Preferences.getOldChangelog(mContext);
-		String currentChangelog = getResources().getString(R.string.app_version);
-		if(!oldChangelog.equals(currentChangelog)) {
-			showWhatsNew();
 		}
 		
 		// Create download directories if needed
@@ -161,11 +146,8 @@ public class MainActivity extends Activity implements Constants{
 		Utils.setHasFileDownloaded(mContext);
 
 		// Update the layouts
-		updateDonateLinkLayout();
-		updateAddonsLayout();
 		updateRomInformation();
 		updateRomUpdateLayouts();
-		updateWebsiteLayout();
 	}
 
 	@Override
@@ -214,43 +196,6 @@ public class MainActivity extends Activity implements Constants{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				MainActivity.this.finish();
-			}
-		});
-		
-		// Donate Dialog
-		mDonateDialog = new AlertDialog.Builder(this);
-		String[] donateItems = { "PayPal", "BitCoin" };
-		mDonateDialog.setTitle(getResources().getString(R.string.donate))		
-		.setSingleChoiceItems(donateItems, 0, null)
-		.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				String url = "";
-				int selectedPosition = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
-				if (selectedPosition == 0) {
-					url = RomUpdate.getDonateLink(mContext);
-				} else {
-					url = RomUpdate.getBitCoinLink(mContext);
-				}
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse(url));
-				
-				try {
-					startActivity(intent);
-				} catch(ActivityNotFoundException ex) {
-					// Nothing to handle BitCoin payments. Send to Play Store
-					if (DEBUGGING)
-						Log.d(TAG, ex.getMessage());					
-					mPlayStoreDialog.show();
-				}
-			}
-		})
-		.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
 			}
 		});
 		
@@ -374,34 +319,6 @@ public class MainActivity extends Activity implements Constants{
 			updateNotAvailableSummary.setText(lastChecked + " " + time);
 		}
 	}
-	
-	private void updateAddonsLayout() {
-		CardView addonsLink = (CardView) findViewById(R.id.layout_main_addons);
-		addonsLink.setVisibility(View.GONE);
-		
-		if (RomUpdate.getAddonsCount(mContext) > 0) {
-			addonsLink.setVisibility(View.VISIBLE);
-		}
-	}
-
-	private void updateDonateLinkLayout() {
-		CardView donateLink = (CardView) findViewById(R.id.layout_main_dev_donate_link);
-		donateLink.setVisibility(View.GONE);
-		
-		if (!(RomUpdate.getDonateLink(mContext).trim().equals("null")) 
-				|| !(RomUpdate.getBitCoinLink(mContext).trim().equals("null"))) {
-			donateLink.setVisibility(View.VISIBLE);
-		}
-	}
-
-	private void updateWebsiteLayout() {
-		CardView webLink = (CardView) findViewById(R.id.layout_main_dev_website);
-		webLink.setVisibility(View.GONE);
-
-		if (!RomUpdate.getWebsite(mContext).trim().equals("null")) {
-			webLink.setVisibility(View.VISIBLE);
-		}
-	}
 
 	private void updateRomInformation() {
 		String htmlColorOpen = "";
@@ -460,39 +377,6 @@ public class MainActivity extends Activity implements Constants{
 		startActivity(intent);
 	}
 	
-	public void openAddons(View v) {
-		Intent intent = new Intent(mContext, AddonActivity.class);
-		startActivity(intent);
-	}
-
-	public void openDonationPage(View v) {
-		
-		boolean payPalLinkAvailable = RomUpdate.getDonateLink(mContext).trim().equals("null");
-		boolean bitCoinLinkAvailable = RomUpdate.getBitCoinLink(mContext).trim().equals("null");
-		if (!payPalLinkAvailable && !bitCoinLinkAvailable) {
-			mDonateDialog.show();
-		} else if (!payPalLinkAvailable && bitCoinLinkAvailable) {
-			String url = RomUpdate.getDonateLink(mContext);
-			Intent intent = new Intent(Intent.ACTION_VIEW);
-			intent.setData(Uri.parse(url));
-			startActivity(intent);			
-		} else if (payPalLinkAvailable && !bitCoinLinkAvailable) {
-			String url = RomUpdate.getBitCoinLink(mContext);
-			Intent intent = new Intent(Intent.ACTION_VIEW);
-			intent.setData(Uri.parse(url));
-			startActivity(intent);			
-		} else {
-			// Shouldn't be here
-		}
-	}
-
-	public void openWebsitePage(View v) {
-		String url = RomUpdate.getWebsite(mContext);
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setData(Uri.parse(url));
-		startActivity(intent);
-	}
-
 	public void openSettings(View v) {
 		Intent intent = new Intent(mContext, SettingsActivity.class);
 		startActivity(intent);
@@ -503,13 +387,6 @@ public class MainActivity extends Activity implements Constants{
 		String changelog = RomUpdate.getChangelog(mContext);
 		new Changelog(this, mContext, title, changelog, false).execute();
 	}
-
-	private void showWhatsNew() {
-		String title = getResources().getString(R.string.changelog);
-		String changelog = getResources().getString(R.string.changelog_url);
-		new Changelog(this, mContext, title, changelog, true).execute();
-	}
-	
 	public static void updateProgress(int progress, int downloaded, int total, Activity activity) {
 		if(mProgressBar != null) {
 			mProgressBar.setProgress((int) progress);
