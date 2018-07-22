@@ -95,24 +95,10 @@ public class MainActivity extends Activity implements Constants{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ota_main);
 
-		if (isLollipop) {
-			Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
-			setActionBar(toolbar);
-			toolbar.setTitle(getResources().getString(R.string.app_name));
-                        toolbar.setTitleTextColor(0xff4c8bf4);
-                        toolbar.setElevation(6);
-		} else {
-			// Custom ActionBar view
-			ActionBar actionBar = getActionBar();
-			actionBar.setTitle(R.string.app_name);
-			LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
-					LayoutParams.WRAP_CONTENT,
-					Gravity.END |
-					Gravity.CENTER_VERTICAL);
-			View actionbarView = LayoutInflater.from(this).inflate(R.layout.ota_main_actionbar_top, null);
-			actionBar.setCustomView(actionbarView, layoutParams);
-			actionBar.setDisplayShowCustomEnabled(true);
-		}
+	        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+		setActionBar(toolbar);
+                toolbar.setTitleTextColor(0xff058fff);
+		toolbar.setTitle(getResources().getString(R.string.app_name));
 		
 		// Create download directories if needed
 		File installAfterFlashDir = new File(SD_CARD 
@@ -165,15 +151,14 @@ public class MainActivity extends Activity implements Constants{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		if (isLollipop)
+		
 			getMenuInflater().inflate(R.menu.ota_menu_main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		if (isLollipop)
+		
 			switch (item.getItemId()) {
 			case R.id.menu_changelog:
 				openChangelog(null);
@@ -322,15 +307,11 @@ public class MainActivity extends Activity implements Constants{
 
 	private void updateRomInformation() {
 		String htmlColorOpen = "";
-		if (isLollipop) {
 			if (Preferences.getCurrentTheme(mContext) == 0) { // Light
 				htmlColorOpen = "<font color='#757575'>";
 			} else {
 				htmlColorOpen = "<font color='#80cbc4'>";
 			}
-		} else {
-			htmlColorOpen = "<font color='#33b5e5'>";
-		}
 		String htmlColorClose = "</font>";
 
 		//ROM name

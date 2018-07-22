@@ -23,8 +23,8 @@
     <Toolbar
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@color/ota_banner_bg"
         android:theme="@style/Theme.RagnarDark" />
 
     <ScrollView
@@ -35,7 +35,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="24dp" >
 
             <include layout="@layout/card_update" />
 

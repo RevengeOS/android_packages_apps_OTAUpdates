@@ -22,7 +22,7 @@
         <attr name="settingsIcon" format="reference" />
         <attr name="changelogIcon" format="reference" />
         <attr name="downloadIcon" format="reference" />
-		<attr name="addonsIcon" format="reference" />
+	<attr name="addonsIcon" format="reference" />
         <attr name="backgroundSelector" format="reference" />
         <attr name="separator" format="reference" />
         <attr name="browserIcon" format="reference" />
