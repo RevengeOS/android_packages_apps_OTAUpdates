@@ -25,6 +25,7 @@ cardview_dir := ../../../frameworks/support/v7/cardview
 src_dirs := src src_bypass
 res_dirs := res $(chips_dir) $(cardview_dir)/res
 
+LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
 LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
 
@@ -33,8 +34,9 @@ LOCAL_AAPT_FLAGS := \
 	--extra-packages android.support.v7.cardview
 
 LOCAL_PACKAGE_NAME := OTAUpdates
-
-LOCAL_MODULE_TAGS := optional
+LOCAL_PRIVATE_PLATFORM_APIS := true
+LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
 	RootTools \
@@ -42,10 +44,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 	android-support-v7-cardview
 
 LOCAL_JNI_SHARED_LIBRARIES := libbypass
-
-LOCAL_CERTIFICATE := platform
-
-LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_PROGUARD_ENABLED := disabled
 
